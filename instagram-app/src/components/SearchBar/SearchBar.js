@@ -18,7 +18,7 @@ export default function SearchBar(props) {
                                 type="text"
                                 name="search"
                                 className="search-form"
-                                placeholder="search"
+                                placeholder="Search"
                         />
                 </Col>
                 <Col lg="3" md="6" xs="12">

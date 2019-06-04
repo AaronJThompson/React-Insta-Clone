@@ -10,7 +10,7 @@ export default function PostContainer(props) {
     return (
         <div className="post-container">
             <Card>
-                <CardTitle style={{fontWeight: "bold"}}>
+                <CardTitle style={{fontWeight: "bold"}} className="post-header">
                     <img src={thumbnailUrl} alt={username} className="user-thumb"/>
                     &nbsp;
                     {username}
