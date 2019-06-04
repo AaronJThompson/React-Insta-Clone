@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import dummyData from './dummy-data';
+import PostContainer from './components/PostContainer/PostContainer';
 
+const initialData = dummyData;
 function App() {
+  const [ posts, setPosts ] = useState(initialData);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {
+        posts.map(post => {
+          return (
+            <PostContainer
+            username={post.username}
+            thumbnailUrl={post.thumbnailUrl}
+            imageUrl={post.imageUrl}
+            likes={post.likes}
+            timestamp={post.timestamp}
+            comments={post.comments}
+            />
+          )
+        })
+      }
     </div>
   );
 }
