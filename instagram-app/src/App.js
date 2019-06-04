@@ -5,7 +5,7 @@ import dummyData from './dummy-data';
 import PostContainer from './components/PostContainer/PostContainer';
 import SearchBar from './components/SearchBar/SearchBar';
 import uuid from 'uuid';
-
+import levenshtein from 'fast-levenshtein';
 const initialData = dummyData;
 
 class App extends React.Component {
@@ -55,7 +55,19 @@ class App extends React.Component {
     })
     this.setState({posts: newPosts});
   }
-  
+  shouldShowResult = (post) => {
+    let searchTerm = this.state.searchInput.toLowerCase();
+    let usernameLowered = post.username.toLowerCase();
+    //Get Levenshtein distance using fast-levenshtein
+    let distance = levenshtein.get(searchTerm, usernameLowered);
+
+    //If the search term is shorter than the username, we should normalize the distance for easier searching
+    if (searchTerm.length < usernameLowered.length){
+      distance -= usernameLowered.length - searchTerm.length;
+    }
+    console.log(distance, post.username);
+    return true;
+  }
   render() {
     return (
       <div>
@@ -65,7 +77,7 @@ class App extends React.Component {
         />
         {
 
-          this.state.posts.filter((post) => post.username.toLowerCase().search(this.state.searchInput.toLowerCase()) !== -1)
+          this.state.posts.filter((post) => this.shouldShowResult(post))
           .map(post => {
             return (
               <PostContainer
