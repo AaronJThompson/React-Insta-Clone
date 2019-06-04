@@ -54,6 +54,7 @@ function App() {
             timestamp={post.timestamp}
             comments={post.comments}
             addComment={addComment}
+            likePost={likePost}
             />
           )
         })

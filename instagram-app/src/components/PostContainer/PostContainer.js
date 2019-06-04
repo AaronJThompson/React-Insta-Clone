@@ -5,7 +5,7 @@ import PostButtons from './PostButtons';
 import { Card, CardBody, CardImg, CardTitle, Container, Input } from 'reactstrap';
 import moment from 'moment';
 export default function PostContainer(props) {
-    let { username, thumbnailUrl, imageUrl, likes, timestamp, comments, addComment, id } = props;
+    let { username, thumbnailUrl, imageUrl, likes, timestamp, comments, addComment, id, likePost } = props;
     const [ commentInput, setCommentInput ] = useState('');
 
     let commentChangeHandler = event => {
@@ -20,6 +20,9 @@ export default function PostContainer(props) {
           setCommentInput('');
         }
     }
+    let likeHandler = event => {
+        likePost(id);
+    }
     return (
         <div className="post-container">
             <Card>
@@ -30,7 +33,7 @@ export default function PostContainer(props) {
                 </CardTitle>
                 <CardImg top width="100%" src={imageUrl} />
                 <CardBody>
-                    <PostButtons />
+                    <PostButtons likeHandler={likeHandler}/>
                     <p style={{fontWeight: "bold"}}>{likes} likes</p>
                     <CommentSection comments={comments} />
                     <p className="post-timestamp">{moment(timestamp, 'MMMM Do YYYY, h:mm:ss a').fromNow()}</p>
