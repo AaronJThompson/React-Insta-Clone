@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import dummyData from './dummy-data';
 import PostContainer from './components/PostContainer/PostContainer';
+import SearchBar from './components/SearchBar/SearchBar';
 import uuid from 'uuid';
 
 const initialData = dummyData;
@@ -10,6 +11,7 @@ function App() {
   const [ posts, setPosts ] = useState(initialData);
   return (
     <div>
+      <SearchBar />
       {
         posts.map(post => {
           return (
