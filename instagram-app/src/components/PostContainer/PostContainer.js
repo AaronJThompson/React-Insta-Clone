@@ -6,10 +6,11 @@ export default function PostContainer(props) {
     let { username, thumbnailUrl, imageUrl, likes, timestamp, comments } = props;
 
     return (
-        <div>
+        <div className="post-container">
             <Card>
                 <CardTitle>
                     <img src={thumbnailUrl} alt={username} />
+                    &nbsp;
                     {username}
                 </CardTitle>
                 <CardImg top width="100%" src={imageUrl} />

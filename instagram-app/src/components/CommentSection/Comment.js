@@ -9,6 +9,7 @@ export default function Comment(props) {
             <span style={{fontWeight: "bold"}}>
                 {username}
             </span>
+            &nbsp;
             {text}
         </p>
     )

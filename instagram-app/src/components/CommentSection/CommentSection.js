@@ -1,6 +1,7 @@
 import React from 'react';
 import './CommentSection.css';
 import Comment from './Comment';
+import uuid from 'uuid';
 
 export default function CommentSection(props) {
     let { comments } = props;
@@ -10,7 +11,7 @@ export default function CommentSection(props) {
             {
                 comments.map(comment => {
                     return (
-                        <Comment username={comment.username} text={comment.text} />
+                        <Comment key={uuid()} username={comment.username} text={comment.text} />
                     )
                 })
             }
