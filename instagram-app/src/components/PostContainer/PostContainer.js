@@ -12,6 +12,8 @@ export default function PostContainer(props) {
         setCommentInput(event.target.value);
     }
     let detectEnter = event => {
+        if (commentInput === '')
+            return;
         var keycode = event.keyCode ? event.keyCode : event.which;
         if (keycode === 13){
           addComment({username: 'TestUser', text:commentInput}, id);
