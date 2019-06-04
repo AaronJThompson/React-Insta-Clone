@@ -22,10 +22,17 @@ function App() {
       setPosts(newPosts);
   }
   let addComment = (comment, postId) => {
-    console.log(postId, posts);
     setPosts(posts.map(post => {
       if (post.id === postId) {
         post.comments.push(comment);
+      }
+      return post;
+    }))
+  }
+  let likePost = (postId) => {
+    setPosts(posts.map(post => {
+      if (post.id === postId) {
+        post.likes += 1;
       }
       return post;
     }))
