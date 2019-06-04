@@ -7,9 +7,16 @@ import SearchBar from './components/SearchBar/SearchBar';
 import uuid from 'uuid';
 
 const initialData = dummyData;
-function App() {
-  const [ posts, setPosts ] = useState(initialData);
-  let addPostIds = (postArray) => {
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: initialData,
+    }
+  }
+
+  addPostIds = (postArray) => {
     let changes = 0;
     let newPosts = postArray.map(post => {
       if (!post.id){
@@ -19,48 +26,52 @@ function App() {
       return post;
     })
     if (changes)
-      setPosts(newPosts);
+      this.setState({posts: newPosts});
   }
-  let addComment = (comment, postId) => {
-    setPosts(posts.map(post => {
+  addComment = (comment, postId) => {
+    const newPosts = this.state.posts.map(post => {
       if (post.id === postId) {
         post.comments.push(comment);
       }
       return post;
-    }))
+    })
+    this.setState({posts: newPosts});
   }
-  let likePost = (postId) => {
-    setPosts(posts.map(post => {
+  likePost = (postId) => {
+    const newPosts = this.state.posts.map(post => {
       if (post.id === postId) {
         post.likes += 1;
       }
       return post;
-    }))
+    })
+    this.setState({posts: newPosts});
   }
-  addPostIds(posts);
-  return (
-    <div>
-      <SearchBar />
-      {
-        posts.map(post => {
-          return (
-            <PostContainer
-            key={post.id}
-            id={post.id}
-            username={post.username}
-            thumbnailUrl={post.thumbnailUrl}
-            imageUrl={post.imageUrl}
-            likes={post.likes}
-            timestamp={post.timestamp}
-            comments={post.comments}
-            addComment={addComment}
-            likePost={likePost}
-            />
-          )
-        })
-      }
-    </div>
-  );
+  
+  render() {
+    return (
+      <div>
+        <SearchBar />
+        {
+          this.state.posts.map(post => {
+            return (
+              <PostContainer
+              key={post.id}
+              id={post.id}
+              username={post.username}
+              thumbnailUrl={post.thumbnailUrl}
+              imageUrl={post.imageUrl}
+              likes={post.likes}
+              timestamp={post.timestamp}
+              comments={post.comments}
+              addComment={this.addComment}
+              likePost={this.likePost}
+              />
+            )
+          })
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
