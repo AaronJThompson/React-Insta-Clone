@@ -9,6 +9,15 @@ import uuid from 'uuid';
 const initialData = dummyData;
 function App() {
   const [ posts, setPosts ] = useState(initialData);
+  let addPostIds = (postArray) => {
+    setPosts(postArray.map(post => {
+      if (!post.id){
+        post.id = uuid();
+      }
+      return post;
+    }))
+  }
+  addPostIds(posts);
   return (
     <div>
       <SearchBar />
@@ -16,7 +25,8 @@ function App() {
         posts.map(post => {
           return (
             <PostContainer
-            key={uuid()}
+            key={post.id}
+            id={post.id}
             username={post.username}
             thumbnailUrl={post.thumbnailUrl}
             imageUrl={post.imageUrl}

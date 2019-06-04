@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PostContainer.css';
 import CommentSection from '../CommentSection/CommentSection';
 import PostButtons from './PostButtons';
 import { Card, CardBody, CardImg, CardTitle, Container, Input } from 'reactstrap';
 import moment from 'moment';
 export default function PostContainer(props) {
-    let { username, thumbnailUrl, imageUrl, likes, timestamp, comments } = props;
+    let { username, thumbnailUrl, imageUrl, likes, timestamp, comments, addComment, id } = props;
+    const [ commentInput, setCommentInput ] = useState('');
 
+    let commentChangeHandler = event => {
+        setCommentInput(event.target.value);
+    }
+    let detectEnter = event => {
+        var keycode = event.keyCode ? event.keyCode : event.which;
+        if (keycode === 13){
+          addComment(commentInput);
+          setCommentInput('');
+        }
+    }
     return (
         <div className="post-container">
             <Card>
@@ -27,6 +38,8 @@ export default function PostContainer(props) {
                         name="comment"
                         className="comment-form"
                         placeholder="Add a comment..."
+                        value={commentInput}
+                        onChange={commentChangeHandler}
                     />
                 </CardBody>
             </Card>
