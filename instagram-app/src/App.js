@@ -68,7 +68,7 @@ class App extends React.Component {
       distance -= usernameLowered.length - searchTerm.length;
     }
     // If the distance is less than 20% of the search term length, display it.
-    return distance < (searchTerm.length * 0.2);
+    return distance < (searchTerm.length * 0.3);
   }
   render() {
     return (
