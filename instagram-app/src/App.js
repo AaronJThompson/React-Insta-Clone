@@ -10,9 +10,22 @@ const initialData = dummyData;
 function App() {
   const [ posts, setPosts ] = useState(initialData);
   let addPostIds = (postArray) => {
-    setPosts(postArray.map(post => {
+    let changes = 0;
+    let newPosts = postArray.map(post => {
       if (!post.id){
+        changes++;
         post.id = uuid();
+      }
+      return post;
+    })
+    if (changes)
+      setPosts(newPosts);
+  }
+  let addComment = (comment, postId) => {
+    console.log(postId, posts);
+    setPosts(posts.map(post => {
+      if (post.id === postId) {
+        post.comments.push(comment);
       }
       return post;
     }))
@@ -33,6 +46,7 @@ function App() {
             likes={post.likes}
             timestamp={post.timestamp}
             comments={post.comments}
+            addComment={addComment}
             />
           )
         })

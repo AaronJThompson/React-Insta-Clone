@@ -14,7 +14,7 @@ export default function PostContainer(props) {
     let detectEnter = event => {
         var keycode = event.keyCode ? event.keyCode : event.which;
         if (keycode === 13){
-          addComment(commentInput);
+          addComment({username: 'TestUser', text:commentInput}, id);
           setCommentInput('');
         }
     }
@@ -40,6 +40,7 @@ export default function PostContainer(props) {
                         placeholder="Add a comment..."
                         value={commentInput}
                         onChange={commentChangeHandler}
+                        onKeyPress={detectEnter}
                     />
                 </CardBody>
             </Card>
