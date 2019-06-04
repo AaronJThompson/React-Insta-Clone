@@ -6,7 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col, Input, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap';
 
 export default function SearchBar(props) {
-
+    let { inputHandler, inputValue } = props;
     return (
         <Container>
             <Row>
@@ -19,6 +19,8 @@ export default function SearchBar(props) {
                                 name="search"
                                 className="search-form"
                                 placeholder="Search"
+                                value={inputValue}
+                                onChange={inputHandler}
                         />
                 </Col>
                 <Col lg="3" md="6" xs="12">

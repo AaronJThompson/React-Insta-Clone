@@ -13,7 +13,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       posts: initialData,
+      searchInput: '',
     }
+  }
+
+  searchHandler = (event) => {
+    this.setState({searchInput: event.target.value});
   }
 
   addPostIds = (postArray) => {
@@ -50,7 +55,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar 
+          inputHandler={this.searchHandler}
+          inputValue={this.state.searchInput}
+        />
         {
           this.state.posts.map(post => {
             return (
