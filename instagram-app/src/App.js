@@ -56,6 +56,8 @@ class App extends React.Component {
     this.setState({posts: newPosts});
   }
   shouldShowResult = (post) => {
+    if (this.state.searchInput.length === 0)
+      return true;
     let searchTerm = this.state.searchInput.toLowerCase();
     let usernameLowered = post.username.toLowerCase();
     //Get Levenshtein distance using fast-levenshtein
@@ -65,8 +67,8 @@ class App extends React.Component {
     if (searchTerm.length < usernameLowered.length){
       distance -= usernameLowered.length - searchTerm.length;
     }
-    console.log(distance, post.username);
-    return true;
+    // If the distance is less than 20% of the search term length, display it.
+    return distance < (searchTerm.length * 0.2);
   }
   render() {
     return (
