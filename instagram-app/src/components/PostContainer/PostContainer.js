@@ -8,13 +8,14 @@ export default function PostContainer(props) {
     return (
         <div className="post-container">
             <Card>
-                <CardTitle>
-                    <img src={thumbnailUrl} alt={username} />
+                <CardTitle style={{fontWeight: "bold"}}>
+                    <img src={thumbnailUrl} alt={username} className="user-thumb"/>
                     &nbsp;
                     {username}
                 </CardTitle>
                 <CardImg top width="100%" src={imageUrl} />
                 <CardBody>
+                    <p style={{fontWeight: "bold"}}>{likes} likes</p>
                     <CommentSection comments={comments} />
                 </CardBody>
             </Card>

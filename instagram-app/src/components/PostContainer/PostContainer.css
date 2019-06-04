@@ -1,4 +1,10 @@
 .post-container{
     max-width: 50rem;
     margin: 0 auto;
+    margin-bottom: 5rem;
+}
+.user-thumb{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
 }
