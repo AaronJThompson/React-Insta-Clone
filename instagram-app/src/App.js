@@ -12,9 +12,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: initialData,
+      posts: [],
       searchInput: '',
     }
+  }
+
+  componentDidMount() {
+    this.addPostIds(initialData);
   }
 
   searchHandler = (event) => {
