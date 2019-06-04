@@ -64,7 +64,9 @@ class App extends React.Component {
           inputValue={this.state.searchInput}
         />
         {
-          this.state.posts.map(post => {
+
+          this.state.posts.filter((post) => post.username.toLowerCase().search(this.state.searchInput.toLowerCase()) !== -1)
+          .map(post => {
             return (
               <PostContainer
               key={post.id}
