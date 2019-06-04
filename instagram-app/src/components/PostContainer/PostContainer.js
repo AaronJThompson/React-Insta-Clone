@@ -1,6 +1,7 @@
 import React from 'react';
 import './PostContainer.css';
-import CommentSection from '../CommentSection/CommentSection'
+import CommentSection from '../CommentSection/CommentSection';
+import PostButtons from './PostButtons';
 import { Card, CardBody, CardImg, CardTitle, Container } from 'reactstrap';
 export default function PostContainer(props) {
     let { username, thumbnailUrl, imageUrl, likes, timestamp, comments } = props;
@@ -15,6 +16,7 @@ export default function PostContainer(props) {
                 </CardTitle>
                 <CardImg top width="100%" src={imageUrl} />
                 <CardBody>
+                    <PostButtons />
                     <p style={{fontWeight: "bold"}}>{likes} likes</p>
                     <CommentSection comments={comments} />
                 </CardBody>

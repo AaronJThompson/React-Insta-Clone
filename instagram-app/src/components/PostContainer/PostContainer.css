@@ -8,3 +8,10 @@
     width: 2rem;
     border-radius: 50%;
 }
+.post-buttons{
+    font-size: 1.5rem;
+    display: flex;
+    width: 4rem;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
