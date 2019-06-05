@@ -15,6 +15,7 @@ export default function Login(props) {
     }
 
     let login = (event) => {
+        event.preventDefault();
         let user = JSON.stringify({
             username: username,
         })
@@ -24,7 +25,7 @@ export default function Login(props) {
 
     return (
         <div className="login">
-            <form>
+            <form onSubmit={login}>
                 <input
                     type="text"
                     name="username"
@@ -42,7 +43,6 @@ export default function Login(props) {
                 <input
                     type="submit"
                     value="Login"
-                    onClick={login}
                 />
             </form>
         </div>
