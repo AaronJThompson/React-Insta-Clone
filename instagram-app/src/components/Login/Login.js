@@ -16,6 +16,8 @@ export default function Login(props) {
 
     let login = (event) => {
         event.preventDefault();
+        if (!username || !password)
+            return;
         let user = JSON.stringify({
             username: username,
         })
