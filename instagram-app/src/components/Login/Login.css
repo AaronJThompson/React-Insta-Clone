@@ -4,6 +4,8 @@
     background: radial-gradient(calc(50vh + 100vw) at 15.69% 100%, #FACF67 0%, #EE4F32 40.24%, #DA1B51 74.48%, #8318B6 100%);
     width: 100%;
     height: 100%;
+    top:0;
+    left:0;
 }
 
 .login form{
