@@ -7,7 +7,7 @@ import Login from './components/Login/Login';
 import withAuthenticate from './authentication/withAuthentication';
 const initialData = dummyData;
 
-const PostPageWithAuthenticate = withAuthenticate(PostsPage);
+const PostPageWithAuthenticate = withAuthenticate(PostsPage, Login);
 
 class App extends React.Component {
   constructor(props) {
