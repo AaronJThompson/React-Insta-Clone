@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 
 export default function Login(props) {
-
+    let { updateAuth } = props;
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
 
@@ -22,7 +22,7 @@ export default function Login(props) {
             username: username,
         })
         localStorage.setItem('user', user);
-        window.location.reload();
+        updateAuth();
     }
 
     return (

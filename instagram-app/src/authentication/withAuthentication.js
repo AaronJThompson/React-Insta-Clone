@@ -10,6 +10,12 @@ export default function withAuthentication(Component, Login) {
             }
         }
 
+        updateAuthentication= () => {
+            if (localStorage.getItem('user')) {
+                this.setState({loggedIn: true});
+            }
+        }
+
         componentDidMount() {
             if (localStorage.getItem('user')) {
                 this.setState({loggedIn: true});
@@ -19,7 +25,7 @@ export default function withAuthentication(Component, Login) {
         render() {
             if (this.state.loggedIn)
                 return <Component {...this.props} />;
-            return <Login />;
+            return <Login updateAuth={this.updateAuthentication}/>;
         }
     }
 }
