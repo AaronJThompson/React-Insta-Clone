@@ -3,6 +3,7 @@ import './App.css';
 import dummyData from './dummy-data';
 import PostsPage from './components/PostContainer/PostsPage';
 import SearchBar from './components/SearchBar/SearchBar';
+import Login from './components/Login/Login';
 import withAuthenticate from './authentication/withAuthentication';
 const initialData = dummyData;
 

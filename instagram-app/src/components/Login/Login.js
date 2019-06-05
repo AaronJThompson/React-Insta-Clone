@@ -19,6 +19,7 @@ export default function Login(props) {
             username: username,
         })
         localStorage.setItem('user', user);
+        window.location.reload();
     }
 
     return (
