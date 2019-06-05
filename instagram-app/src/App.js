@@ -4,8 +4,6 @@ import dummyData from './dummy-data';
 import PostsPage from './components/PostContainer/PostsPage';
 import SearchBar from './components/SearchBar/SearchBar';
 import withAuthenticate from './authentication/withAuthentication';
-import uuid from 'uuid';
-import levenshtein from 'fast-levenshtein';
 const initialData = dummyData;
 
 const PostPageWithAuthenticate = withAuthenticate(PostsPage);
