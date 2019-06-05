@@ -7,12 +7,14 @@ export default class PostsPage extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      user: {}
     };
   }
 
   componentDidMount() {
     this.addPostIds(this.props.posts);
+    this.setState({ user: JSON.parse(localStorage.getItem('user'))});
   }
 
   addPostIds = postArray => {
@@ -81,6 +83,7 @@ export default class PostsPage extends React.Component{
                     comments={post.comments}
                     addComment={this.addComment}
                     likePost={this.likePost}
+                    user={this.state.user}
                     />
                 )
                 })
