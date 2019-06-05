@@ -33,6 +33,16 @@
     transition: 0.3s;
     text-align: center;
 }
+.login input:focus{
+    width: 18rem;
+    background-color: white;
+    color: black;
+    outline:none;
+}
+.login input[type=submit]:hover{
+    background-color: white;
+    color: black;
+}
 .login input[type=submit]{
     width: 10rem;
 }
