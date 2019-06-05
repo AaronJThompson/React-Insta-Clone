@@ -1,0 +1,22 @@
+.search-form {
+    max-width: 20rem;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #FAFAFA !important;
+}
+
+.text-logo {
+    height: 3rem;
+    margin-left: .5rem;
+}
+.icon-logo{
+    height: 2.5rem;
+    font-size: 3rem;
+    padding-right: .5rem;
+    border-right: 1px solid grey;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
