@@ -20,4 +20,30 @@ export default function Login(props) {
         })
         localStorage.setItem('user', user);
     }
+
+    return (
+        <div className="login">
+            <form>
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={username}
+                    onChange={usernameHandler}
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={passwordHandler}
+                />
+                <input
+                    type="submit"
+                    value="Login"
+                    onClick={login}
+                />
+            </form>
+        </div>
+    )
 }
