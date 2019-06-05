@@ -3,9 +3,12 @@ import './App.css';
 import dummyData from './dummy-data';
 import PostsPage from './components/PostContainer/PostsPage';
 import SearchBar from './components/SearchBar/SearchBar';
+import withAuthenticate from './authentication/withAuthentication';
 import uuid from 'uuid';
 import levenshtein from 'fast-levenshtein';
 const initialData = dummyData;
+
+const PostPageWithAuthenticate = withAuthenticate(PostsPage);
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +28,7 @@ class App extends React.Component {
           inputHandler={this.searchHandler}
           inputValue={this.state.searchInput}
         />
-        <PostsPage
+        <PostPageWithAuthenticate
           posts={initialData}
           searchInput={this.state.searchInput}
         />
