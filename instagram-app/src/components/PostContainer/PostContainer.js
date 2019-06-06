@@ -5,7 +5,7 @@ import PostButtons from './PostButtons';
 import { Card, CardBody, CardImg, CardTitle, Container, Input } from 'reactstrap';
 import moment from 'moment';
 export default function PostContainer(props) {
-    let { username, thumbnailUrl, imageUrl, likes, timestamp, comments, addComment, id, likePost } = props;
+    let { username, thumbnailUrl, imageUrl, likes, timestamp, comments, addComment, id, likePost, user } = props;
     const [ commentInput, setCommentInput ] = useState('');
 
     let commentChangeHandler = event => {
@@ -16,7 +16,7 @@ export default function PostContainer(props) {
             return;
         var keycode = event.keyCode ? event.keyCode : event.which;
         if (keycode === 13){
-          addComment({username: 'TestUser', text:commentInput}, id);
+          addComment({username: user.username, text:commentInput}, id);
           setCommentInput('');
         }
     }
