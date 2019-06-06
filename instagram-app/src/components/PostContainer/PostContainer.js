@@ -1,9 +1,38 @@
 import React, { useState } from 'react';
-import './PostContainer.css';
 import CommentSection from '../CommentSection/CommentSection';
 import PostButtons from './PostButtons';
 import { Card, CardBody, CardImg, CardTitle, Container, Input } from 'reactstrap';
 import moment from 'moment';
+import styled from 'styled-components';
+
+const StyledPostContainer = styled.div`
+    max-width: 50rem;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+
+    .post-buttons{
+        font-size: 1.5rem;
+        display: flex;
+        width: 4rem;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .post-header{
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        padding: .75rem;
+        padding-bottom: 0;
+    }
+`;
+
+const UserThumbnail = styled.img`
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+`;
+
 export default function PostContainer(props) {
     let { username, thumbnailUrl, imageUrl, likes, timestamp, comments, addComment, id, likePost, user } = props;
     const [ commentInput, setCommentInput ] = useState('');
@@ -24,10 +53,10 @@ export default function PostContainer(props) {
         likePost(id);
     }
     return (
-        <div className="post-container">
+        <StyledPostContainer className="post-container">
             <Card>
                 <CardTitle style={{fontWeight: "bold"}} className="post-header">
-                    <img src={thumbnailUrl} alt={username} className="user-thumb"/>
+                    <UserThumbnail src={thumbnailUrl} alt={username} className="user-thumb"/>
                     &nbsp;
                     {username}
                 </CardTitle>
@@ -49,6 +78,6 @@ export default function PostContainer(props) {
                     />
                 </CardBody>
             </Card>
-        </div>
+        </StyledPostContainer>
     )
 }
