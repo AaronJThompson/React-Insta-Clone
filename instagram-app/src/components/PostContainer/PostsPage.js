@@ -2,6 +2,7 @@ import React from "react";
 import PostContainer from "./PostContainer";
 import uuid from "uuid";
 import levenshtein from "fast-levenshtein";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default class PostsPage extends React.Component{
   constructor(props) {
@@ -66,29 +67,57 @@ export default class PostsPage extends React.Component{
 
   render() {
     return(
-        <div>
-            {
+        
+        <Router>
+            <div>
+                <Route path="/" exact={true} render={() => 
+                    {
+                        return this.state.posts.filter((post) => this.shouldShowResult(post))
+                        .map(post => {
+                        return (
+                            <PostContainer
+                            key={post.id}
+                            id={post.id}
+                            username={post.username}
+                            thumbnailUrl={post.thumbnailUrl}
+                            imageUrl={post.imageUrl}
+                            likes={post.likes}
+                            timestamp={post.timestamp}
+                            comments={post.comments}
+                            addComment={this.addComment}
+                            likePost={this.likePost}
+                            user={this.state.user}
+                            />
+                        )
+                        })
+                    }
+                }
+                />
 
-                this.state.posts.filter((post) => this.shouldShowResult(post))
-                .map(post => {
-                return (
-                    <PostContainer
-                    key={post.id}
-                    id={post.id}
-                    username={post.username}
-                    thumbnailUrl={post.thumbnailUrl}
-                    imageUrl={post.imageUrl}
-                    likes={post.likes}
-                    timestamp={post.timestamp}
-                    comments={post.comments}
-                    addComment={this.addComment}
-                    likePost={this.likePost}
-                    user={this.state.user}
-                    />
-                )
-                })
-            }
-        </div>
+                <Route path="/post/:postId" render={({ match }) =>{
+                    debugger;
+                    let post = this.state.posts.find((postEntry) => postEntry.id === match.params.postId);
+                    if (!post)
+                        return;
+                    return (
+                        <PostContainer
+                        key={post.id}
+                        id={post.id}
+                        username={post.username}
+                        thumbnailUrl={post.thumbnailUrl}
+                        imageUrl={post.imageUrl}
+                        likes={post.likes}
+                        timestamp={post.timestamp}
+                        comments={post.comments}
+                        addComment={this.addComment}
+                        likePost={this.likePost}
+                        user={this.state.user}
+                        />
+                    )
+                }}
+                />
+            </div>
+        </Router>
     );
   }
 }
